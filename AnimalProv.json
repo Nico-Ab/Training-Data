@@ -1,0 +1,66 @@
+{
+    "nodes": [
+      {
+        "name": "Forest",
+        "type": "environment"
+      },
+      {
+        "name": "Tiger",
+        "type": "predator"
+      },
+      {
+        "name": "Deer",
+        "type": "prey"
+      },
+      {
+        "name": "Rabbit",
+        "type": "prey"
+      },
+      {
+        "name": "Grass",
+        "type": "vegetation"
+      }
+    ],
+    "edges": [
+      {
+        "source": "Forest",
+        "target": "Tiger",
+        "relationship": "inhabits"
+      },
+      {
+        "source": "Forest",
+        "target": "Deer",
+        "relationship": "inhabits"
+      },
+      {
+        "source": "Forest",
+        "target": "Rabbit",
+        "relationship": "inhabits"
+      },
+      {
+        "source": "Forest",
+        "target": "Grass",
+        "relationship": "grows"
+      },
+      {
+        "source": "Tiger",
+        "target": "Deer",
+        "relationship": "predator_of"
+      },
+      {
+        "source": "Tiger",
+        "target": "Rabbit",
+        "relationship": "predator_of"
+      },
+      {
+        "source": "Deer",
+        "target": "Grass",
+        "relationship": "eats"
+      },
+      {
+        "source": "Rabbit",
+        "target": "Grass",
+        "relationship": "eats"
+      }
+    ]
+  }

@@ -1,14 +1,17 @@
 [
-	{
-    		"instruction,output": "User: Hello, I would like to speak with you about your car's extended warranty\nAssistant: What about my car's extended warranty?",
-    		"instruction,input,output": "User: %instruction%: %input%\nAssistant: %output%"
-	},
-	{
-    		"instruction,output": "User: Your car's extended warranty has expired\nAssistant: Oh no, that's horrible",
-    		"instruction,input,output": "User: %instruction%: %input%\nAssistant: %output%"
-	},
-	{
-    		"instruction,output": "User: Can you tell me the year and make of your car?\nAssistant: Yes, it is a 2004 Honda Civic",
-    		"instruction,input,output": "User: %instruction%: %input%\nAssistant: %output%"
-	}
+    {
+        "instruction": "Hello, I would like to speak with you about your car's extended warranty",
+        "input": "What about my car's extended warranty?",
+        "output": "Sure, what would you like to know?"
+    },
+    {
+        "instruction": "Your car's extended warranty has expired",
+        "input": "Oh no, that's horrible",
+        "output": "Yes, it's important to keep track of these things."
+    },
+    {
+        "instruction": "Can you tell me the year and make of your car?",
+        "input": "Yes, it is a 2004 Honda Civic",
+        "output": "That's a great car! How can I assist you further?"
+    }
 ]

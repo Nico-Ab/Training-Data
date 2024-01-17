@@ -1,0 +1,16 @@
+node_name,node_type
+Forest,environment
+Tiger,predator
+Deer,prey
+Rabbit,prey
+Grass,vegetation
+
+source,target,relationship
+Forest,Tiger,inhabits
+Forest,Deer,inhabits
+Forest,Rabbit,inhabits
+Forest,Grass,grows
+Tiger,Deer,predator_of
+Tiger,Rabbit,predator_of
+Deer,Grass,eats
+Rabbit,Grass,eats

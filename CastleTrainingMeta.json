@@ -15,8 +15,8 @@
         "output": "MATCH (queen:Node {name: 'Queen'}) RETURN queen.attributes;"
     },
 	{
-		"instruction": "Find all nodes that the 'King' and 'Queen# rule over and the persons who serve them.",
+		"instruction": "Find all nodes that the 'King' and 'Queen' rule over and the persons who serve them.",
         "input": "{'nodes': [{'name': 'Castle', 'type': 'structure'}, {'name': 'Lord', 'type': 'person'}, {'name': 'Blacksmith', 'type': 'profession'}, {'name': 'Stone Mason', 'type': 'profession'}, {'name': 'Guard', 'type': 'person'}, {'name': 'Architect', 'type': 'profession'}, {'name': 'King', 'type': 'person'}, {'name': 'Queen', 'type': 'person'}], 'relationships': [{'type': 'OWNS', 'source': 'Lord', 'target': 'Castle'}, {'type': 'CONTRIBUTES_TO', 'source': 'Blacksmith', 'target': 'Castle'}, {'type': 'CONTRIBUTES_TO', 'source': 'Stone Mason', 'target': 'Castle'}, {'type': 'PROTECTS', 'source': 'Guard', 'target': 'Castle'}, {'type': 'DESIGNS', 'source': 'Architect', 'target': 'Castle'}, {'type': 'RULES', 'source': 'King', 'target': 'Castle'}, {'type': 'RULES', 'source': 'Queen', 'target': 'Castle'}, {'type': 'MARRIED_TO', 'source': 'Lord', 'target': 'Queen'}, {'type': 'SERVES', 'source': 'Lord', 'target': 'King'}, {'type': 'ALLIED_WITH', 'source': 'Lord', 'target': 'King'}, {'type': 'MARRIED_TO', 'source': 'Queen', 'target': 'King'}, {'type': 'EMPLOYS', 'source': 'King', 'target': 'Architect'}, {'type': 'REQUIRES_PROTECTION', 'source': 'Queen', 'target': 'Guard'}]}",
-        "output": "MATCH (tiger:Node {name: 'Tiger'})-[:PREDATOR_OF]->(prey:Node) RETURN prey.name;"
+        "output": "MATCH (king:Node {name: 'King'})-[:RULES]->(castle:Node) MATCH (lord:Node)-[:SERVES]->(queen:Node {name: 'Queen'}) RETURN king, castle, lord, queen;"
 	}
 ]

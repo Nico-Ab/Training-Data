@@ -2,437 +2,437 @@
     {
         "instruction": "Find all nodes representing entities.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Find relationships between studies and any node.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (s:Study)-[r]->(n) RETURN s, r, n LIMIT 5;"
+        "output": "MATCH (s:Study)-[r]->(n) RETURN s, r, n;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (SimulationModel:Entity {type: 'Simulation Model'}) CREATE (FieldData:Entity {type: 'Field Data'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (StudyA:Study {name: 'Study A'}) CREATE (StudyB:Study {name: 'Study B'}) MERGE (SimulationModel)-[:PART_OF]->(StudyA) MERGE (FieldData)-[:PART_OF]->(StudyB) MERGE (Validation)-[:PART_OF]->(StudyA) MERGE (Building)-[:PART_OF]->(StudyB) MERGE (Calibrating)-[:PART_OF]->(StudyA) CREATE (SimulationModel)-[:USED_IN]->(Validation) CREATE (FieldData)-[:USED_IN]->(Building) CREATE (SimulationModel)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Person:Entity {type: 'Person'}) CREATE (Company:Entity {type: 'Company'}) CREATE (Project:Entity {type: 'Project'}) CREATE (Meeting:Activity {type: 'Meeting'}) CREATE (Coding:Activity {type: 'Coding'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (StudyX:Study {name: 'Study X'}) CREATE (StudyY:Study {name: 'Study Y'}) MERGE (Person)-[:PART_OF]->(StudyX) MERGE (Company)-[:PART_OF]->(StudyY) MERGE (Meeting)-[:PART_OF]->(StudyX) MERGE (Coding)-[:PART_OF]->(StudyY) MERGE (Testing)-[:PART_OF]->(StudyX) CREATE (Person)-[:USED_IN]->(Meeting) CREATE (Company)-[:USED_IN]->(Coding) CREATE (Person)-[:USED_IN]->(Testing);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Person:Entity {type: 'Person'}) CREATE (Company:Entity {type: 'Company'}) CREATE (Project:Entity {type: 'Project'}) CREATE (Meeting:Activity {type: 'Meeting'}) CREATE (Coding:Activity {type: 'Coding'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (StudyX:Study {name: 'Study X'}) CREATE (StudyY:Study {name: 'Study Y'}) MERGE (Person)-[:PART_OF]->(StudyX) MERGE (Company)-[:PART_OF]->(StudyY) MERGE (Meeting)-[:PART_OF]->(StudyX) MERGE (Coding)-[:PART_OF]->(StudyY) MERGE (Testing)-[:PART_OF]->(StudyX) CREATE (Person)-[:USED_IN]->(Meeting) CREATE (Company)-[:USED_IN]->(Coding) CREATE (Person)-[:USED_IN]->(Testing);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for project nodes.",
         "input": "CREATE (Person:Entity {type: 'Person'}) CREATE (Company:Entity {type: 'Company'}) CREATE (Project:Entity {type: 'Project'}) CREATE (Meeting:Activity {type: 'Meeting'}) CREATE (Coding:Activity {type: 'Coding'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (StudyX:Study {name: 'Study X'}) CREATE (StudyY:Study {name: 'Study Y'}) MERGE (Person)-[:PART_OF]->(StudyX) MERGE (Company)-[:PART_OF]->(StudyY) MERGE (Meeting)-[:PART_OF]->(StudyX) MERGE (Coding)-[:PART_OF]->(StudyY) MERGE (Testing)-[:PART_OF]->(StudyX) CREATE (Person)-[:USED_IN]->(Meeting) CREATE (Company)-[:USED_IN]->(Coding) CREATE (Person)-[:USED_IN]->(Testing);",
-        "output": "MATCH (p:Project) RETURN p.name, labels(p) LIMIT 5;"
+        "output": "MATCH (p:Project) RETURN p.name, labels(p);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Person:Entity {type: 'Person'}) CREATE (Company:Entity {type: 'Company'}) CREATE (Project:Entity {type: 'Project'}) CREATE (Meeting:Activity {type: 'Meeting'}) CREATE (Coding:Activity {type: 'Coding'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (StudyX:Study {name: 'Study X'}) CREATE (StudyY:Study {name: 'Study Y'}) MERGE (Person)-[:PART_OF]->(StudyX) MERGE (Company)-[:PART_OF]->(StudyY) MERGE (Meeting)-[:PART_OF]->(StudyX) MERGE (Coding)-[:PART_OF]->(StudyY) MERGE (Testing)-[:PART_OF]->(StudyX) CREATE (Person)-[:USED_IN]->(Meeting) CREATE (Company)-[:USED_IN]->(Coding) CREATE (Person)-[:USED_IN]->(Testing);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Person:Entity {type: 'Person'}) CREATE (Company:Entity {type: 'Company'}) CREATE (Project:Entity {type: 'Project'}) CREATE (Meeting:Activity {type: 'Meeting'}) CREATE (Coding:Activity {type: 'Coding'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (StudyX:Study {name: 'Study X'}) CREATE (StudyY:Study {name: 'Study Y'}) MERGE (Person)-[:PART_OF]->(StudyX) MERGE (Company)-[:PART_OF]->(StudyY) MERGE (Meeting)-[:PART_OF]->(StudyX) MERGE (Coding)-[:PART_OF]->(StudyY) MERGE (Testing)-[:PART_OF]->(StudyX) CREATE (Person)-[:USED_IN]->(Meeting) CREATE (Company)-[:USED_IN]->(Coding) CREATE (Person)-[:USED_IN]->(Testing);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for order nodes.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (o:Order) RETURN o.name, labels(o) LIMIT 5;"
+        "output": "MATCH (o:Order) RETURN o.name, labels(o);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Order:Entity {type: 'Order'}) CREATE (Review:Activity {type: 'Review'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Return:Activity {type: 'Return'}) CREATE (SaleA:Study {name: 'Sale A'}) CREATE (SaleB:Study {name: 'Sale B'}) MERGE (Product)-[:PART_OF]->(SaleA) MERGE (Customer)-[:PART_OF]->(SaleB) MERGE (Review)-[:PART_OF]->(SaleA) MERGE (Purchase)-[:PART_OF]->(SaleB) MERGE (Return)-[:PART_OF]->(SaleA) CREATE (Product)-[:USED_IN]->(Review) CREATE (Customer)-[:USED_IN]->(Purchase) CREATE (Product)-[:USED_IN]->(Return);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for landmark nodes.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (l:Landmark) RETURN l.name, labels(l) LIMIT 5;"
+        "output": "MATCH (l:Landmark) RETURN l.name, labels(l);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Country:Entity {type: 'Country'}) CREATE (City:Entity {type: 'City'}) CREATE (Landmark:Entity {type: 'Landmark'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Reside:Activity {type: 'Reside'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (TourA:Study {name: 'Tour A'}) CREATE (TourB:Study {name: 'Tour B'}) MERGE (Country)-[:PART_OF]->(TourA) MERGE (City)-[:PART_OF]->(TourB) MERGE (Landmark)-[:PART_OF]->(TourA) MERGE (Explore)-[:PART_OF]->(TourB) MERGE (Reside)-[:PART_OF]->(TourA) CREATE (Country)-[:USED_IN]->(Explore) CREATE (City)-[:USED_IN]->(Reside) CREATE (Country)-[:USED_IN]->(Visit);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for publisher nodes.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (p:Publisher) RETURN p.name, labels(p) LIMIT 5;"
+        "output": "MATCH (p:Publisher) RETURN p.name, labels(p);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Publisher:Entity {type: 'Publisher'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Edit:Activity {type: 'Edit'}) CREATE (Publish:Activity {type: 'Publish'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Publisher)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Edit)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Edit) CREATE (Book)-[:USED_IN]->(Publish);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for director nodes.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (d:Director) RETURN d.name, labels(d) LIMIT 5;"
+        "output": "MATCH (d:Director) RETURN d.name, labels(d);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Movie:Entity {type: 'Movie'}) CREATE (Actor:Entity {type: 'Actor'}) CREATE (Director:Entity {type: 'Director'}) CREATE (Act:Activity {type: 'Act'}) CREATE (Direct:Activity {type: 'Direct'}) CREATE (Produce:Activity {type: 'Produce'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Movie)-[:PART_OF]->(GenreA) MERGE (Actor)-[:PART_OF]->(GenreB) MERGE (Director)-[:PART_OF]->(GenreA) MERGE (Act)-[:PART_OF]->(GenreB) MERGE (Direct)-[:PART_OF]->(GenreA) CREATE (Movie)-[:USED_IN]->(Act) CREATE (Actor)-[:USED_IN]->(Direct) CREATE (Movie)-[:USED_IN]->(Produce);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for customer nodes.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (c:Customer) RETURN c.name, labels(c) LIMIT 5;"
+        "output": "MATCH (c:Customer) RETURN c.name, labels(c);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Product:Entity {type: 'Product'}) CREATE (Supplier:Entity {type: 'Supplier'}) CREATE (Customer:Entity {type: 'Customer'}) CREATE (Purchase:Activity {type: 'Purchase'}) CREATE (Manufacture:Activity {type: 'Manufacture'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Product)-[:PART_OF]->(CategoryA) MERGE (Supplier)-[:PART_OF]->(CategoryB) MERGE (Customer)-[:PART_OF]->(CategoryA) MERGE (Purchase)-[:PART_OF]->(CategoryB) MERGE (Manufacture)-[:PART_OF]->(CategoryA) CREATE (Product)-[:USED_IN]->(Purchase) CREATE (Supplier)-[:USED_IN]->(Manufacture) CREATE (Product)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for government nodes.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (g:Government) RETURN g.name, labels(g) LIMIT 5;"
+        "output": "MATCH (g:Government) RETURN g.name, labels(g);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (City:Entity {type: 'City'}) CREATE (Citizen:Entity {type: 'Citizen'}) CREATE (Government:Entity {type: 'Government'}) CREATE (Vote:Activity {type: 'Vote'}) CREATE (Build:Activity {type: 'Build'}) CREATE (Administer:Activity {type: 'Administer'}) CREATE (RegionA:Study {name: 'Region A'}) CREATE (RegionB:Study {name: 'Region B'}) MERGE (City)-[:PART_OF]->(RegionA) MERGE (Citizen)-[:PART_OF]->(RegionB) MERGE (Government)-[:PART_OF]->(RegionA) MERGE (Vote)-[:PART_OF]->(RegionB) MERGE (Build)-[:PART_OF]->(RegionA) CREATE (City)-[:USED_IN]->(Vote) CREATE (Citizen)-[:USED_IN]->(Build) CREATE (City)-[:USED_IN]->(Administer);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for app nodes.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (a:App) RETURN a.name, labels(a) LIMIT 5;"
+        "output": "MATCH (a:App) RETURN a.name, labels(a);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Device:Entity {type: 'Device'}) CREATE (User:Entity {type: 'User'}) CREATE (App:Entity {type: 'App'}) CREATE (Install:Activity {type: 'Install'}) CREATE (Use:Activity {type: 'Use'}) CREATE (Review:Activity {type: 'Review'}) CREATE (CategoryA:Study {name: 'Category A'}) CREATE (CategoryB:Study {name: 'Category B'}) MERGE (Device)-[:PART_OF]->(CategoryA) MERGE (User)-[:PART_OF]->(CategoryB) MERGE (App)-[:PART_OF]->(CategoryA) MERGE (Install)-[:PART_OF]->(CategoryB) MERGE (Use)-[:PART_OF]->(CategoryA) CREATE (Device)-[:USED_IN]->(Install) CREATE (User)-[:USED_IN]->(Use) CREATE (Device)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Create nodes for different entity types.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n;"
     },
     {
         "instruction": "Create relationships between entities and activities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for author nodes.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (a:Author) RETURN a.name, labels(a) LIMIT 5;"
+        "output": "MATCH (a:Author) RETURN a.name, labels(a);"
     },
     {
         "instruction": "Find all nodes representing activities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find relationships between entities and activities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Get metadata for study nodes.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "Get types of all entity nodes.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.type;"
     },
     {
         "instruction": "Find relationships between activities and entities.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Find entities and their associated studies.",
         "input": "CREATE (Book:Entity {type: 'Book'}) CREATE (Author:Entity {type: 'Author'}) CREATE (Reader:Entity {type: 'Reader'}) CREATE (Write:Activity {type: 'Write'}) CREATE (Read:Activity {type: 'Read'}) CREATE (Review:Activity {type: 'Review'}) CREATE (GenreA:Study {name: 'Genre A'}) CREATE (GenreB:Study {name: 'Genre B'}) MERGE (Book)-[:PART_OF]->(GenreA) MERGE (Author)-[:PART_OF]->(GenreB) MERGE (Reader)-[:PART_OF]->(GenreA) MERGE (Write)-[:PART_OF]->(GenreB) MERGE (Read)-[:PART_OF]->(GenreA) CREATE (Book)-[:USED_IN]->(Write) CREATE (Author)-[:USED_IN]->(Read) CREATE (Book)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Add entities representing different cities.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN n.name, labels(n) LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.name, labels(n);"
     },
     {
         "instruction": "Establish relationships between cities and activities.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Retrieve metadata for the Tokyo node.",
@@ -442,42 +442,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Explore relationships between entities and activities.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e, r, a;"
     },
     {
         "instruction": "Retrieve metadata for study nodes.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "List all entity types in the graph.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity) RETURN DISTINCT n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN DISTINCT n.type;"
     },
     {
         "instruction": "Investigate relationships between activities and entities.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.type;"
     },
     {
         "instruction": "Identify entities and their associated studies.",
         "input": "CREATE (NewYork:Entity {type: 'City', name: 'New York'}) CREATE (Paris:Entity {type: 'City', name: 'Paris'}) CREATE (Tokyo:Entity {type: 'City', name: 'Tokyo'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Visit:Activity {type: 'Visit'}) CREATE (Review:Activity {type: 'Review'}) CREATE (NorthAmerica:Study {name: 'North America'}) CREATE (Europe:Study {name: 'Europe'}) MERGE (NewYork)-[:PART_OF]->(NorthAmerica) MERGE (Paris)-[:PART_OF]->(Europe) CREATE (NewYork)-[:USED_IN]->(Explore) CREATE (Paris)-[:USED_IN]->(Visit) CREATE (NewYork)-[:USED_IN]->(Review);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n, s.name;"
     },
     {
         "instruction": "Introduce various animal species to the graph.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (n:Entity) RETURN n.species, labels(n) LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.species, labels(n);"
     },
     {
         "instruction": "Establish connections between animals and activities.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a;"
     },
     {
         "instruction": "Retrieve details for the Giraffe node.",
@@ -487,52 +487,52 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Explore relationships between animals and activities.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a;"
     },
     {
         "instruction": "Retrieve metadata for study nodes.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "List all entity types in the graph.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (n:Entity) RETURN DISTINCT n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN DISTINCT n.type;"
     },
     {
         "instruction": "Investigate relationships between activities and entities.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.species LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.species;"
     },
     {
         "instruction": "Identify entities and their associated studies.",
         "input": "CREATE (Lion:Entity {type: 'Animal', species: 'Lion'}) CREATE (Elephant:Entity {type: 'Animal', species: 'Elephant'}) CREATE (Giraffe:Entity {type: 'Animal', species: 'Giraffe'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (SafariA:Study {name: 'Safari A'}) CREATE (SafariB:Study {name: 'Safari B'}) MERGE (Lion)-[:PART_OF]->(SafariA) MERGE (Elephant)-[:PART_OF]->(SafariB) CREATE (Lion)-[:USED_IN]->(Hunt) CREATE (Elephant)-[:USED_IN]->(Observe) CREATE (Lion)-[:USED_IN]->(Study);",
-        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n.species, s.name LIMIT 5;"
+        "output": "MATCH (n:Entity)-[:PART_OF]->(s:Study) RETURN n.species, s.name;"
     },
     {
         "instruction": "Which entities are part of the 'Wildlife' study?",
         "input": "CREATE (Tiger:Entity {type: 'Animal', species: 'Tiger'}) CREATE (Bear:Entity {type: 'Animal', species: 'Bear'}) CREATE (Deer:Entity {type: 'Animal', species: 'Deer'}) CREATE (Hike:Activity {type: 'Hike'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (Wildlife:Study {name: 'Wildlife'}) CREATE (Nature:Study {name: 'Nature'}) MERGE (Tiger)-[:PART_OF]->(Wildlife) MERGE (Bear)-[:PART_OF]->(Nature) CREATE (Tiger)-[:USED_IN]->(Hike) CREATE (Bear)-[:USED_IN]->(Observe) CREATE (Tiger)-[:USED_IN]->(Study);",
-        "output": "MATCH (e:Entity)-[:PART_OF]->(s:Study {name: 'Wildlife'}) RETURN e.species LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:PART_OF]->(s:Study {name: 'Wildlife'}) RETURN e.species;"
     },
     {
         "instruction": "What activities involve the 'Nature' study?",
         "input": "CREATE (Tiger:Entity {type: 'Animal', species: 'Tiger'}) CREATE (Bear:Entity {type: 'Animal', species: 'Bear'}) CREATE (Deer:Entity {type: 'Animal', species: 'Deer'}) CREATE (Hike:Activity {type: 'Hike'}) CREATE (Observe:Activity {type: 'Observe'}) CREATE (Study:Activity {type: 'Study'}) CREATE (Wildlife:Study {name: 'Wildlife'}) CREATE (Nature:Study {name: 'Nature'}) MERGE (Tiger)-[:PART_OF]->(Wildlife) MERGE (Bear)-[:PART_OF]->(Nature) CREATE (Tiger)-[:USED_IN]->(Hike) CREATE (Bear)-[:USED_IN]->(Observe) CREATE (Tiger)-[:USED_IN]->(Study);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Nature'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Nature'}) RETURN a.type;"
     },
     {
         "instruction": "Add new species to the graph.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (n:Entity) RETURN n.species, labels(n) LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.species, labels(n);"
     },
     {
         "instruction": "Connect new species with activities.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a;"
     },
     {
         "instruction": "Retrieve details for the 'Mountains' study.",
@@ -542,47 +542,47 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Explore relationships between species and activities.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a;"
     },
     {
         "instruction": "Retrieve metadata for study nodes.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "List all entity types in the graph.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (n:Entity) RETURN DISTINCT n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN DISTINCT n.type;"
     },
     {
         "instruction": "Investigate relationships between activities and entities.",
         "input": "CREATE (Lynx:Entity {type: 'Animal', species: 'Lynx'}) CREATE (Wolf:Entity {type: 'Animal', species: 'Wolf'}) CREATE (Fox:Entity {type: 'Animal', species: 'Fox'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Track:Activity {type: 'Track'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Forest:Study {name: 'Forest'}) CREATE (Mountains:Study {name: 'Mountains'}) MERGE (Lynx)-[:PART_OF]->(Forest) MERGE (Wolf)-[:PART_OF]->(Mountains) CREATE (Lynx)-[:USED_IN]->(Hunt) CREATE (Wolf)-[:USED_IN]->(Track) CREATE (Fox)-[:USED_IN]->(Explore);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.species LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.species;"
     },
     {
         "instruction": "Which studies involve the 'Jungle' activity?",
         "input": "CREATE (Monkey:Entity {type: 'Animal', species: 'Monkey'}) CREATE (Tiger:Entity {type: 'Animal', species: 'Tiger'}) CREATE (Snake:Entity {type: 'Animal', species: 'Snake'}) CREATE (Climb:Activity {type: 'Climb'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Explore:Activity {type: 'Explore'}) CREATE (Rainforest:Study {name: 'Rainforest'}) CREATE (Jungle:Study {name: 'Jungle'}) MERGE (Monkey)-[:PART_OF]->(Rainforest) MERGE (Tiger)-[:PART_OF]->(Jungle) CREATE (Monkey)-[:USED_IN]->(Climb) CREATE (Tiger)-[:USED_IN]->(Hunt) CREATE (Snake)-[:USED_IN]->(Explore);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Jungle'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Jungle'}) RETURN s.name;"
     },
     {
         "instruction": "What entities are part of the 'Oceanography' study?",
         "input": "CREATE (Fish:Entity {type: 'Animal', species: 'Fish'}) CREATE (Shark:Entity {type: 'Animal', species: 'Shark'}) CREATE (Coral:Entity {type: 'Plant', species: 'Coral'}) CREATE (Swim:Activity {type: 'Swim'}) CREATE (Hunt:Activity {type: 'Hunt'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Oceanography:Study {name: 'Oceanography'}) CREATE (MarineBiology:Study {name: 'Marine Biology'}) MERGE (Fish)-[:PART_OF]->(Oceanography) MERGE (Shark)-[:PART_OF]->(MarineBiology) CREATE (Fish)-[:USED_IN]->(Swim) CREATE (Shark)-[:USED_IN]->(Hunt) CREATE (Coral)-[:USED_IN]->(Research);",
-        "output": "MATCH (e:Entity)-[:PART_OF]->(s:Study {name: 'Oceanography'}) RETURN e.species LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:PART_OF]->(s:Study {name: 'Oceanography'}) RETURN e.species;"
     },
     {
         "instruction": "Create nodes for new plant species.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (n:Entity) RETURN n.species, labels(n) LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.species, labels(n);"
     },
     {
         "instruction": "Connect new plant species with activities.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a;"
     },
     {
         "instruction": "Retrieve details for the 'Botany' study.",
@@ -592,47 +592,47 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Explore relationships between plant species and activities.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.species, r, a;"
     },
     {
         "instruction": "Retrieve metadata for study nodes.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "List all entity types in the graph.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (n:Entity) RETURN DISTINCT n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN DISTINCT n.type;"
     },
     {
         "instruction": "Investigate relationships between activities and entities.",
         "input": "CREATE (Rose:Entity {type: 'Plant', species: 'Rose'}) CREATE (Sunflower:Entity {type: 'Plant', species: 'Sunflower'}) CREATE (Tulip:Entity {type: 'Plant', species: 'Tulip'}) CREATE (Planting:Activity {type: 'Planting'}) CREATE (Watering:Activity {type: 'Watering'}) CREATE (Observing:Activity {type: 'Observing'}) CREATE (Gardening:Study {name: 'Gardening'}) CREATE (Botany:Study {name: 'Botany'}) MERGE (Rose)-[:PART_OF]->(Gardening) MERGE (Sunflower)-[:PART_OF]->(Botany) CREATE (Rose)-[:USED_IN]->(Planting) CREATE (Sunflower)-[:USED_IN]->(Watering) CREATE (Tulip)-[:USED_IN]->(Observing);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.species LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.species;"
     },
     {
         "instruction": "Which entities are associated with the 'Research' activity?",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (Biologist:Entity {type: 'Person', role: 'Biologist'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (Biologist)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (Biologist)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Research'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Research'}) RETURN e.role;"
     },
     {
         "instruction": "What studies involve the 'Experiment' activity?",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (Biologist:Entity {type: 'Person', role: 'Biologist'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (Biologist)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (Biologist)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name;"
     },
     {
         "instruction": "Create nodes for new tools.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (n:Entity) RETURN n.name, labels(n) LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.name, labels(n);"
     },
     {
         "instruction": "Connect new tools with activities.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a;"
     },
     {
         "instruction": "Retrieve details for the 'Physics' study.",
@@ -642,47 +642,47 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Explore relationships between tools and activities.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a;"
     },
     {
         "instruction": "Retrieve metadata for study nodes.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "List all entity types in the graph.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (n:Entity) RETURN DISTINCT n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN DISTINCT n.type;"
     },
     {
         "instruction": "Investigate relationships between activities and entities.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.name LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.name;"
     },
     {
         "instruction": "Which entities are associated with the 'Exploration' activity?",
         "input": "CREATE (Astronaut:Entity {type: 'Person', role: 'Astronaut'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Collection:Activity {type: 'Collection'}) CREATE (SpaceScience:Study {name: 'Space Science'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Astronaut)-[:PART_OF]->(SpaceScience) MERGE (Geologist)-[:PART_OF]->(Geology) CREATE (Astronaut)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Analysis) CREATE (Rover)-[:USED_IN]->(Collection);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Exploration'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Exploration'}) RETURN e.role;"
     },
     {
         "instruction": "What studies involve the 'Collection' activity?",
         "input": "CREATE (Astronaut:Entity {type: 'Person', role: 'Astronaut'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Collection:Activity {type: 'Collection'}) CREATE (SpaceScience:Study {name: 'Space Science'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Astronaut)-[:PART_OF]->(SpaceScience) MERGE (Geologist)-[:PART_OF]->(Geology) CREATE (Astronaut)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Analysis) CREATE (Rover)-[:USED_IN]->(Collection);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Collection'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Collection'}) RETURN s.name;"
     },
     {
         "instruction": "Create nodes for new robotic tools.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Entity) RETURN n.name, labels(n) LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN n.name, labels(n);"
     },
     {
         "instruction": "Connect new robotic tools with activities.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a;"
     },
     {
         "instruction": "Retrieve details for the 'Geology' study.",
@@ -692,57 +692,57 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Explore relationships between robotic tools and activities.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a LIMIT 5;"
+        "output": "MATCH (e:Entity)-[r]->(a:Activity) RETURN e.name, r, a;"
     },
     {
         "instruction": "Retrieve metadata for study nodes.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study) RETURN s.name, labels(s) LIMIT 5;"
+        "output": "MATCH (s:Study) RETURN s.name, labels(s);"
     },
     {
         "instruction": "List all entity types in the graph.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Entity) RETURN DISTINCT n.type LIMIT 5;"
+        "output": "MATCH (n:Entity) RETURN DISTINCT n.type;"
     },
     {
         "instruction": "Investigate relationships between activities and entities.",
         "input": "CREATE (Satellite:Entity {type: 'Robot', name: 'Satellite'}) CREATE (Drill:Entity {type: 'Robot', name: 'Drill'}) CREATE (Rover:Entity {type: 'Robot', name: 'Rover'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Excavation:Activity {type: 'Excavation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Geology:Study {name: 'Geology'}) MERGE (Satellite)-[:PART_OF]->(Astronomy) MERGE (Drill)-[:PART_OF]->(Geology) CREATE (Satellite)-[:USED_IN]->(Observation) CREATE (Drill)-[:USED_IN]->(Excavation) CREATE (Rover)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.name LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(e:Entity) RETURN a.type, e.name;"
     },
     {
         "instruction": "Identify individuals linked to the 'Investigation' process.",
         "input": "CREATE (Detective:Entity {type: 'Person', role: 'Detective'}) CREATE (ForensicExpert:Entity {type: 'Person', role: 'Forensic Expert'}) CREATE (MagnifyingGlass:Entity {type: 'Tool', name: 'Magnifying Glass'}) CREATE (Investigation:Activity {type: 'Investigation'}) CREATE (Interrogation:Activity {type: 'Interrogation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (CriminalJustice:Study {name: 'Criminal Justice'}) CREATE (Forensics:Study {name: 'Forensics'}) MERGE (Detective)-[:PART_OF]->(CriminalJustice) MERGE (ForensicExpert)-[:PART_OF]->(Forensics) CREATE (Detective)-[:USED_IN]->(Investigation) CREATE (ForensicExpert)-[:USED_IN]->(Interrogation) CREATE (MagnifyingGlass)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Investigation'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Investigation'}) RETURN e.role;"
     },
     {
         "instruction": "List studies incorporating the 'Interrogation' activity.",
         "input": "CREATE (Detective:Entity {type: 'Person', role: 'Detective'}) CREATE (ForensicExpert:Entity {type: 'Person', role: 'Forensic Expert'}) CREATE (MagnifyingGlass:Entity {type: 'Tool', name: 'Magnifying Glass'}) CREATE (Investigation:Activity {type: 'Investigation'}) CREATE (Interrogation:Activity {type: 'Interrogation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (CriminalJustice:Study {name: 'Criminal Justice'}) CREATE (Forensics:Study {name: 'Forensics'}) MERGE (Detective)-[:PART_OF]->(CriminalJustice) MERGE (ForensicExpert)-[:PART_OF]->(Forensics) CREATE (Detective)-[:USED_IN]->(Investigation) CREATE (ForensicExpert)-[:USED_IN]->(Interrogation) CREATE (MagnifyingGlass)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Interrogation'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Interrogation'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve tools employed during 'Analysis' procedures.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities linked to the 'Criminal Justice' study.",
         "input": "CREATE (Detective:Entity {type: 'Person', role: 'Detective'}) CREATE (ForensicExpert:Entity {type: 'Person', role: 'Forensic Expert'}) CREATE (MagnifyingGlass:Entity {type: 'Tool', name: 'Magnifying Glass'}) CREATE (Investigation:Activity {type: 'Investigation'}) CREATE (Interrogation:Activity {type: 'Interrogation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (CriminalJustice:Study {name: 'Criminal Justice'}) CREATE (Forensics:Study {name: 'Forensics'}) MERGE (Detective)-[:PART_OF]->(CriminalJustice) MERGE (ForensicExpert)-[:PART_OF]->(Forensics) CREATE (Detective)-[:USED_IN]->(Investigation) CREATE (ForensicExpert)-[:USED_IN]->(Interrogation) CREATE (MagnifyingGlass)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Criminal Justice'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Criminal Justice'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (Detective:Entity {type: 'Person', role: 'Detective'}) CREATE (ForensicExpert:Entity {type: 'Person', role: 'Forensic Expert'}) CREATE (MagnifyingGlass:Entity {type: 'Tool', name: 'Magnifying Glass'}) CREATE (Investigation:Activity {type: 'Investigation'}) CREATE (Interrogation:Activity {type: 'Interrogation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (CriminalJustice:Study {name: 'Criminal Justice'}) CREATE (Forensics:Study {name: 'Forensics'}) MERGE (Detective)-[:PART_OF]->(CriminalJustice) MERGE (ForensicExpert)-[:PART_OF]->(Forensics) CREATE (Detective)-[:USED_IN]->(Investigation) CREATE (ForensicExpert)-[:USED_IN]->(Interrogation) CREATE (MagnifyingGlass)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in the 'Analysis' and 'Investigation' activities.",
         "input": "CREATE (Detective:Entity {type: 'Person', role: 'Detective'}) CREATE (ForensicExpert:Entity {type: 'Person', role: 'Forensic Expert'}) CREATE (MagnifyingGlass:Entity {type: 'Tool', name: 'Magnifying Glass'}) CREATE (Investigation:Activity {type: 'Investigation'}) CREATE (Interrogation:Activity {type: 'Interrogation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (CriminalJustice:Study {name: 'Criminal Justice'}) CREATE (Forensics:Study {name: 'Forensics'}) MERGE (Detective)-[:PART_OF]->(CriminalJustice) MERGE (ForensicExpert)-[:PART_OF]->(Forensics) CREATE (Detective)-[:USED_IN]->(Investigation) CREATE (ForensicExpert)-[:USED_IN]->(Interrogation) CREATE (MagnifyingGlass)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WHERE a.type IN ['Analysis', 'Investigation'] RETURN e.name, a.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WHERE a.type IN ['Analysis', 'Investigation'] RETURN e.name, a.type;"
     },
     {
         "instruction": "Retrieve details for the 'Forensics' study.",
@@ -752,37 +752,37 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Detective:Entity {type: 'Person', role: 'Detective'}) CREATE (ForensicExpert:Entity {type: 'Person', role: 'Forensic Expert'}) CREATE (MagnifyingGlass:Entity {type: 'Tool', name: 'Magnifying Glass'}) CREATE (Investigation:Activity {type: 'Investigation'}) CREATE (Interrogation:Activity {type: 'Interrogation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (CriminalJustice:Study {name: 'Criminal Justice'}) CREATE (Forensics:Study {name: 'Forensics'}) MERGE (Detective)-[:PART_OF]->(CriminalJustice) MERGE (ForensicExpert)-[:PART_OF]->(Forensics) CREATE (Detective)-[:USED_IN]->(Investigation) CREATE (ForensicExpert)-[:USED_IN]->(Interrogation) CREATE (MagnifyingGlass)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Find individuals associated with the 'Exploration' activity.",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Exploration'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Exploration'}) RETURN e.role;"
     },
     {
         "instruction": "List studies incorporating the 'Survey' activity.",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Survey'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Survey'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve tools used during 'Analysis' procedures.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities linked to the 'Geology' study.",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Geology'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Geology'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in both 'Analysis' and 'Exploration' activities.",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Analysis'}), (e)-[:USED_IN]->(a2:Activity {type: 'Exploration'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Analysis'}), (e)-[:USED_IN]->(a2:Activity {type: 'Exploration'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'Archeology' study.",
@@ -792,42 +792,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (Explorer:Entity {type: 'Person', role: 'Explorer'}) CREATE (Geologist:Entity {type: 'Person', role: 'Geologist'}) CREATE (Drill:Entity {type: 'Tool', name: 'Drill'}) CREATE (Exploration:Activity {type: 'Exploration'}) CREATE (Survey:Activity {type: 'Survey'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Geology:Study {name: 'Geology'}) CREATE (Archeology:Study {name: 'Archeology'}) MERGE (Explorer)-[:PART_OF]->(Geology) MERGE (Geologist)-[:PART_OF]->(Archeology) CREATE (Explorer)-[:USED_IN]->(Exploration) CREATE (Geologist)-[:USED_IN]->(Survey) CREATE (Drill)-[:USED_IN]->(Analysis) CREATE (Explorer)-[:USED_IN]->(Survey) CREATE (Geologist)-[:USED_IN]->(Exploration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Explore persons connected to the 'Analysis' task.",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.role;"
     },
     {
         "instruction": "List studies incorporating the 'Experiment' activity.",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve tools utilized during 'Research' procedures.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Testing) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Research'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Research'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities associated with the 'Chemistry' study.",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Chemistry'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Chemistry'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in both 'Analysis' and 'Experiment' activities.",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Analysis'}), (e)-[:USED_IN]->(a2:Activity {type: 'Experiment'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Analysis'}), (e)-[:USED_IN]->(a2:Activity {type: 'Experiment'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'Physics' study.",
@@ -837,42 +837,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (Scientist:Entity {type: 'Person', role: 'Scientist'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Research:Activity {type: 'Research'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Scientist)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Scientist)-[:USED_IN]->(Research) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Analysis) CREATE (Scientist)-[:USED_IN]->(Experiment) CREATE (LabTech)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Explore individuals connected to the 'Validation' process.",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Validation'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Validation'}) RETURN e.role;"
     },
     {
         "instruction": "List studies involving the 'Testing' activity.",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Testing'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Testing'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve tools utilized during 'Calibration' procedures.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Analysis) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibration'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibration'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities associated with the 'FieldData' study.",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'FieldData'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'FieldData'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in both 'Calibration' and 'Validation' activities.",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Calibration'}), (e)-[:USED_IN]->(a2:Activity {type: 'Validation'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Calibration'}), (e)-[:USED_IN]->(a2:Activity {type: 'Validation'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'SimulationModel' study.",
@@ -882,42 +882,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (Modeler:Entity {type: 'Person', role: 'Modeler'}) CREATE (Engineer:Entity {type: 'Person', role: 'Engineer'}) CREATE (Simulator:Entity {type: 'Tool', name: 'Simulator'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (SimulationModel:Study {name: 'SimulationModel'}) CREATE (FieldData:Study {name: 'FieldData'}) MERGE (Modeler)-[:PART_OF]->(SimulationModel) MERGE (Engineer)-[:PART_OF]->(FieldData) CREATE (Modeler)-[:USED_IN]->(Validation) CREATE (Engineer)-[:USED_IN]->(Testing) CREATE (Simulator)-[:USED_IN]->(Calibration) CREATE (Modeler)-[:USED_IN]->(Testing) CREATE (Engineer)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Explore entities connected to the 'Analysis' task.",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.role;"
     },
     {
         "instruction": "List studies involving the 'Experiment' activity.",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve tools utilized during 'Calibration' procedures.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Analysis) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibration'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibration'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities associated with the 'Chemistry' study.",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Chemistry'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Chemistry'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in both 'Calibration' and 'Analysis' activities.",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Calibration'}), (e)-[:USED_IN]->(a2:Activity {type: 'Analysis'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Calibration'}), (e)-[:USED_IN]->(a2:Activity {type: 'Analysis'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'Chemistry' study.",
@@ -927,42 +927,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (Researcher:Entity {type: 'Person', role: 'Researcher'}) CREATE (LabTech:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Chemistry:Study {name: 'Chemistry'}) MERGE (Researcher)-[:PART_OF]->(Biology) MERGE (LabTech)-[:PART_OF]->(Chemistry) CREATE (Researcher)-[:USED_IN]->(Analysis) CREATE (LabTech)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration) CREATE (Researcher)-[:USED_IN]->(Experiment) CREATE (LabTech)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Explore entities connected to the 'Analysis' activity.",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.role LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.role;"
     },
     {
         "instruction": "List studies involving the 'Experiment' task.",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Experiment'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve tools used during 'Calibration' operations.",
         "input": "CREATE (Telescope:Entity {type: 'Tool', name: 'Telescope'}) CREATE (Beaker:Entity {type: 'Tool', name: 'Beaker'}) CREATE (Computer:Entity {type: 'Tool', name: 'Computer'}) CREATE (Observation:Activity {type: 'Observation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Simulation:Activity {type: 'Simulation'}) CREATE (Astronomy:Study {name: 'Astronomy'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Telescope)-[:PART_OF]->(Astronomy) MERGE (Beaker)-[:PART_OF]->(Physics) CREATE (Telescope)-[:USED_IN]->(Observation) CREATE (Beaker)-[:USED_IN]->(Analysis) CREATE (Computer)-[:USED_IN]->(Simulation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibration'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibration'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities associated with the 'Physics' study.",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Physics'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Physics'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in both 'Calibration' and 'Analysis' activities.",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Calibration'}), (e)-[:USED_IN]->(a2:Activity {type: 'Analysis'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Calibration'}), (e)-[:USED_IN]->(a2:Activity {type: 'Analysis'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'Physics' study.",
@@ -972,42 +972,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (Investigator:Entity {type: 'Person', role: 'Investigator'}) CREATE (Technician:Entity {type: 'Person', role: 'Lab Technician'}) CREATE (Microscope:Entity {type: 'Tool', name: 'Microscope'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Calibration:Activity {type: 'Calibration'}) CREATE (Biology:Study {name: 'Biology'}) CREATE (Physics:Study {name: 'Physics'}) MERGE (Investigator)-[:PART_OF]->(Biology) MERGE (Technician)-[:PART_OF]->(Physics) CREATE (Investigator)-[:USED_IN]->(Analysis) CREATE (Technician)-[:USED_IN]->(Experiment) CREATE (Microscope)-[:USED_IN]->(Calibration) CREATE (Investigator)-[:USED_IN]->(Experiment) CREATE (Technician)-[:USED_IN]->(Calibration);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Identify entities connected to the 'Validation' activity.",
         "input": "CREATE (ModelA:Entity {type: 'Simulation Model', name: 'Model A'}) CREATE (ModelB:Entity {type: 'Simulation Model', name: 'Model B'}) CREATE (DataX:Entity {type: 'Field Data', name: 'Data X'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (ModelA)-[:PART_OF]->(Study1) MERGE (ModelB)-[:PART_OF]->(Study2) CREATE (ModelA)-[:USED_IN]->(Validation) CREATE (DataX)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Validation'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Validation'}) RETURN e.name;"
     },
     {
         "instruction": "List studies involving the 'Building' task.",
         "input": "CREATE (ModelA:Entity {type: 'Simulation Model', name: 'Model A'}) CREATE (ModelB:Entity {type: 'Simulation Model', name: 'Model B'}) CREATE (DataX:Entity {type: 'Field Data', name: 'Data X'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (ModelA)-[:PART_OF]->(Study1) MERGE (ModelB)-[:PART_OF]->(Study2) CREATE (ModelA)-[:USED_IN]->(Validation) CREATE (DataX)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Building'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:USED_IN]->(a:Activity {type: 'Building'}) RETURN s.name;"
     },
     {
         "instruction": "Retrieve entities used during 'Calibrating' processes.",
         "input": "CREATE (InstrumentA:Entity {type: 'Tool', name: 'Instrument A'}) CREATE (InstrumentB:Entity {type: 'Tool', name: 'Instrument B'}) CREATE (SensorX:Entity {type: 'Tool', name: 'Sensor X'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (InstrumentA)-[:PART_OF]->(Study1) MERGE (InstrumentB)-[:PART_OF]->(Study2) CREATE (InstrumentA)-[:USED_IN]->(Experiment) CREATE (SensorX)-[:USED_IN]->(Validation) CREATE (InstrumentB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibrating'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Calibrating'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities associated with 'Study 2'.",
         "input": "CREATE (ModelA:Entity {type: 'Simulation Model', name: 'Model A'}) CREATE (ModelB:Entity {type: 'Simulation Model', name: 'Model B'}) CREATE (DataX:Entity {type: 'Field Data', name: 'Data X'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (ModelA)-[:PART_OF]->(Study1) MERGE (ModelB)-[:PART_OF]->(Study2) CREATE (ModelA)-[:USED_IN]->(Validation) CREATE (DataX)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Study 2'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(s:Study {name: 'Study 2'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve studies linked to the 'Tool' entities.",
         "input": "CREATE (InstrumentA:Entity {type: 'Tool', name: 'Instrument A'}) CREATE (InstrumentB:Entity {type: 'Tool', name: 'Instrument B'}) CREATE (SensorX:Entity {type: 'Tool', name: 'Sensor X'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (InstrumentA)-[:PART_OF]->(Study1) MERGE (InstrumentB)-[:PART_OF]->(Study2) CREATE (InstrumentA)-[:USED_IN]->(Experiment) CREATE (SensorX)-[:USED_IN]->(Validation) CREATE (InstrumentB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name LIMIT 5;"
+        "output": "MATCH (s:Study)-[:PART_OF]->(e:Entity {type: 'Tool'}) RETURN s.name;"
     },
     {
         "instruction": "Find entities involved in both 'Building' and 'Validation' activities.",
         "input": "CREATE (ModelA:Entity {type: 'Simulation Model', name: 'Model A'}) CREATE (ModelB:Entity {type: 'Simulation Model', name: 'Model B'}) CREATE (DataX:Entity {type: 'Field Data', name: 'Data X'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (ModelA)-[:PART_OF]->(Study1) MERGE (ModelB)-[:PART_OF]->(Study2) CREATE (ModelA)-[:USED_IN]->(Validation) CREATE (DataX)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Building'}), (e)-[:USED_IN]->(a2:Activity {type: 'Validation'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Building'}), (e)-[:USED_IN]->(a2:Activity {type: 'Validation'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'Study 1'.",
@@ -1017,42 +1017,42 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (ModelA:Entity {type: 'Simulation Model', name: 'Model A'}) CREATE (ModelB:Entity {type: 'Simulation Model', name: 'Model B'}) CREATE (DataX:Entity {type: 'Field Data', name: 'Data X'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (ModelA)-[:PART_OF]->(Study1) MERGE (ModelB)-[:PART_OF]->(Study2) CREATE (ModelA)-[:USED_IN]->(Validation) CREATE (DataX)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Calibrating);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (ModelA:Entity {type: 'Simulation Model', name: 'Model A'}) CREATE (ModelB:Entity {type: 'Simulation Model', name: 'Model B'}) CREATE (DataX:Entity {type: 'Field Data', name: 'Data X'}) CREATE (Validation:Activity {type: 'Validation'}) CREATE (Building:Activity {type: 'Building'}) CREATE (Calibrating:Activity {type: 'Calibrating'}) CREATE (Study1:Study {name: 'Study 1'}) CREATE (Study2:Study {name: 'Study 2'}) MERGE (ModelA)-[:PART_OF]->(Study1) MERGE (ModelB)-[:PART_OF]->(Study2) CREATE (ModelA)-[:USED_IN]->(Validation) CREATE (DataX)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Calibrating) CREATE (ModelA)-[:USED_IN]->(Building) CREATE (ModelB)-[:USED_IN]->(Validation);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Explore entities associated with the 'Testing' activity.",
         "input": "CREATE (ProductA:Entity {type: 'Product', name: 'Product A'}) CREATE (ProductB:Entity {type: 'Product', name: 'Product B'}) CREATE (MaterialX:Entity {type: 'Material', name: 'Material X'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ProductA)-[:PART_OF]->(Project1) MERGE (ProductB)-[:PART_OF]->(Project2) CREATE (ProductA)-[:USED_IN]->(Testing) CREATE (MaterialX)-[:USED_IN]->(Assembly) CREATE (ProductB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Testing'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Testing'}) RETURN e.name;"
     },
     {
         "instruction": "List projects involving the 'Assembly' task.",
         "input": "CREATE (ProductA:Entity {type: 'Product', name: 'Product A'}) CREATE (ProductB:Entity {type: 'Product', name: 'Product B'}) CREATE (MaterialX:Entity {type: 'Material', name: 'Material X'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ProductA)-[:PART_OF]->(Project1) MERGE (ProductB)-[:PART_OF]->(Project2) CREATE (ProductA)-[:USED_IN]->(Testing) CREATE (MaterialX)-[:USED_IN]->(Assembly) CREATE (ProductB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (p:Project)-[:PART_OF]->(a:Activity {type: 'Assembly'}) RETURN p.name LIMIT 5;"
+        "output": "MATCH (p:Project)-[:PART_OF]->(a:Activity {type: 'Assembly'}) RETURN p.name;"
     },
     {
         "instruction": "Retrieve materials used during 'Analysis' processes.",
         "input": "CREATE (ToolA:Entity {type: 'Tool', name: 'Tool A'}) CREATE (ToolB:Entity {type: 'Tool', name: 'Tool B'}) CREATE (SensorX:Entity {type: 'Sensor', name: 'Sensor X'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ToolA)-[:PART_OF]->(Project1) MERGE (ToolB)-[:PART_OF]->(Project2) CREATE (ToolA)-[:USED_IN]->(Experiment) CREATE (SensorX)-[:USED_IN]->(Testing) CREATE (ToolB)-[:USED_IN]->(Assembly);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.name LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity {type: 'Analysis'}) RETURN e.name;"
     },
     {
         "instruction": "Find activities associated with 'Project 2'.",
         "input": "CREATE (ProductA:Entity {type: 'Product', name: 'Product A'}) CREATE (ProductB:Entity {type: 'Product', name: 'Product B'}) CREATE (MaterialX:Entity {type: 'Material', name: 'Material X'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ProductA)-[:PART_OF]->(Project1) MERGE (ProductB)-[:PART_OF]->(Project2) CREATE (ProductA)-[:USED_IN]->(Testing) CREATE (MaterialX)-[:USED_IN]->(Assembly) CREATE (ProductB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (a:Activity)-[:USED_IN]->(p:Project {name: 'Project 2'}) RETURN a.type LIMIT 5;"
+        "output": "MATCH (a:Activity)-[:USED_IN]->(p:Project {name: 'Project 2'}) RETURN a.type;"
     },
     {
         "instruction": "Retrieve projects linked to the 'Sensor' entities.",
         "input": "CREATE (ToolA:Entity {type: 'Tool', name: 'Tool A'}) CREATE (ToolB:Entity {type: 'Tool', name: 'Tool B'}) CREATE (SensorX:Entity {type: 'Sensor', name: 'Sensor X'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ToolA)-[:PART_OF]->(Project1) MERGE (ToolB)-[:PART_OF]->(Project2) CREATE (ToolA)-[:USED_IN]->(Experiment) CREATE (SensorX)-[:USED_IN]->(Testing) CREATE (ToolB)-[:USED_IN]->(Assembly);",
-        "output": "MATCH (p:Project)-[:PART_OF]->(e:Entity {type: 'Sensor'}) RETURN p.name LIMIT 5;"
+        "output": "MATCH (p:Project)-[:PART_OF]->(e:Entity {type: 'Sensor'}) RETURN p.name;"
     },
     {
         "instruction": "Find entities involved in both 'Assembly' and 'Testing' activities.",
         "input": "CREATE (ProductA:Entity {type: 'Product', name: 'Product A'}) CREATE (ProductB:Entity {type: 'Product', name: 'Product B'}) CREATE (MaterialX:Entity {type: 'Material', name: 'Material X'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ProductA)-[:PART_OF]->(Project1) MERGE (ProductB)-[:PART_OF]->(Project2) CREATE (ProductA)-[:USED_IN]->(Testing) CREATE (MaterialX)-[:USED_IN]->(Assembly) CREATE (ProductB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Assembly'}), (e)-[:USED_IN]->(a2:Activity {type: 'Testing'}) RETURN e.name, a1.type, a2.type LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a1:Activity {type: 'Assembly'}), (e)-[:USED_IN]->(a2:Activity {type: 'Testing'}) RETURN e.name, a1.type, a2.type;"
     },
     {
         "instruction": "Retrieve details for the 'Project 1'.",
@@ -1062,16 +1062,16 @@
     {
         "instruction": "List all activities in the graph.",
         "input": "CREATE (ProductA:Entity {type: 'Product', name: 'Product A'}) CREATE (ProductB:Entity {type: 'Product', name: 'Product B'}) CREATE (MaterialX:Entity {type: 'Material', name: 'Material X'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ProductA)-[:PART_OF]->(Project1) MERGE (ProductB)-[:PART_OF]->(Project2) CREATE (ProductA)-[:USED_IN]->(Testing) CREATE (MaterialX)-[:USED_IN]->(Assembly) CREATE (ProductB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (n:Activity) RETURN n LIMIT 5;"
+        "output": "MATCH (n:Activity) RETURN n;"
     },
     {
         "instruction": "Which entities have participated in more than one activity?",
         "input": "CREATE (ToolA:Entity {type: 'Tool', name: 'Tool A'}) CREATE (ToolB:Entity {type: 'Tool', name: 'Tool B'}) CREATE (SensorX:Entity {type: 'Sensor', name: 'Sensor X'}) CREATE (Experiment:Activity {type: 'Experiment'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ToolA)-[:PART_OF]->(Project1) MERGE (ToolB)-[:PART_OF]->(Project2) CREATE (ToolA)-[:USED_IN]->(Experiment) CREATE (SensorX)-[:USED_IN]->(Testing) CREATE (ToolB)-[:USED_IN]->(Assembly) CREATE (ToolA)-[:USED_IN]->(Testing) CREATE (ToolB)-[:USED_IN]->(Experiment);",
-        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount LIMIT 5;"
+        "output": "MATCH (e:Entity)-[:USED_IN]->(a:Activity) WITH e, COUNT(a) AS activityCount WHERE activityCount > 1 RETURN e.name, activityCount;"
     },
     {
         "instruction": "Check for additional insights about the projects.",
         "input": "CREATE (ProductA:Entity {type: 'Product', name: 'Product A'}) CREATE (ProductB:Entity {type: 'Product', name: 'Product B'}) CREATE (MaterialX:Entity {type: 'Material', name: 'Material X'}) CREATE (Testing:Activity {type: 'Testing'}) CREATE (Assembly:Activity {type: 'Assembly'}) CREATE (Analysis:Activity {type: 'Analysis'}) CREATE (Project1:Project {name: 'Project 1'}) CREATE (Project2:Project {name: 'Project 2'}) MERGE (ProductA)-[:PART_OF]->(Project1) MERGE (ProductB)-[:PART_OF]->(Project2) CREATE (ProductA)-[:USED_IN]->(Testing) CREATE (MaterialX)-[:USED_IN]->(Assembly) CREATE (ProductB)-[:USED_IN]->(Analysis);",
-        "output": "MATCH (p:Project) RETURN p.name, COUNT(()-[:PART_OF]->(p)) AS entityCount LIMIT 5;"
+        "output": "MATCH (p:Project) RETURN p.name, COUNT(()-[:PART_OF]->(p)) AS entityCount;"
     }
 ]
